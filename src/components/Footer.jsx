@@ -1,7 +1,9 @@
-function Footer() {
+function Footer({ length }) {
   return (
     <footer className="footer">
-      <p>© 2021</p>
+      <p>
+        {length} {length > 1 ? "items" : "item"}
+      </p>
     </footer>
   );
 }
