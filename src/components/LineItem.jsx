@@ -1,4 +1,5 @@
 import { FaTrashAlt } from "react-icons/fa";
+import ReactPropTypes from "prop-types";
 
 function LineItem({ item, handleCheck, handleDelete }) {
   return (
@@ -26,5 +27,11 @@ function LineItem({ item, handleCheck, handleDelete }) {
     </li>
   );
 }
+
+LineItem.propTypes = {
+  item: ReactPropTypes.object.isRequired,
+  handleCheck: ReactPropTypes.func.isRequired,
+  handleDelete: ReactPropTypes.func.isRequired,
+};
 
 export default LineItem;

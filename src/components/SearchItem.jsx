@@ -1,3 +1,5 @@
+import ReactPropTypes from "prop-types";
+
 function SearchItem({ searchItem, setSearchItem }) {
   return (
     <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
@@ -15,5 +17,10 @@ function SearchItem({ searchItem, setSearchItem }) {
     </form>
   );
 }
+
+SearchItem.propTypes = {
+  searchItem: ReactPropTypes.string.isRequired,
+  setSearchItem: ReactPropTypes.func.isRequired,
+};
 
 export default SearchItem;

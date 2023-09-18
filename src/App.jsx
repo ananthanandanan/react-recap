@@ -1,6 +1,7 @@
 // import './App.css'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
@@ -9,23 +10,21 @@ import SearchItem from "./components/SearchItem";
 
 function App() {
   const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("shoppingList"))
+    JSON.parse(localStorage.getItem("shoppingList")) || []
   );
-
   const [newItem, setNewItem] = useState("");
   const [searchItem, setSearchItem] = useState("");
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem("shoppingList", JSON.stringify(newItems));
-  };
+  useEffect(() => {
+    localStorage.setItem("shoppingList", JSON.stringify(items));
+  }, [items]);
 
   /* add item */
   const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const AddedItem = { id, item, checked: false };
     const listItems = [...items, AddedItem];
-    setAndSaveItems(listItems);
+    setItems(listItems);
   };
 
   /* handle check */
@@ -37,12 +36,12 @@ function App() {
       }
       return item;
     });
-    setAndSaveItems(newItems);
+    setItems(newItems);
   };
 
   const handleDelete = (id) => {
     const afterDeleteItems = items.filter((item) => item.id !== id);
-    setAndSaveItems(afterDeleteItems);
+    setItems(afterDeleteItems);
   };
 
   // handle submit for adding new item

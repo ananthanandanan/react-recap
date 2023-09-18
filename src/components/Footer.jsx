@@ -1,3 +1,5 @@
+import ReactPropTypes from "prop-types";
+
 function Footer({ length }) {
   return (
     <footer className="footer">
@@ -7,5 +9,9 @@ function Footer({ length }) {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  length: ReactPropTypes.number.isRequired,
+};
 
 export default Footer;

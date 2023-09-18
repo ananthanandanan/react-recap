@@ -1,4 +1,5 @@
 /* Header of the App */
+import ReactPropTypes from "prop-types";
 
 function Header({ title }) {
   return (
@@ -10,6 +11,10 @@ function Header({ title }) {
 
 Header.defaultProps = {
   title: "Checklist",
+};
+
+Header.propTypes = {
+  title: ReactPropTypes.string.isRequired,
 };
 
 export default Header;
